@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[EliteArenaz] - India's Ultimate Esports Arena</title>
-    
+    <title>EliteArenaz - India's Ultimate Esports Arena</title>
+
     <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Swiper.js CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
-    <!-- AOS Animation CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
@@ -28,7 +26,7 @@
             --text-secondary: #94A3B8;
             --accent-color: #FACC15;
             --border-color: #334155;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.3s ease;
         }
 
         body {
@@ -36,32 +34,48 @@
             background-color: var(--primary-bg);
             color: var(--text-primary);
             overflow-x: hidden;
-            line-height: 1.6;
         }
 
-        /* Utility Classes */
-        .text-accent { color: var(--accent-color) !important; }
-        .bg-accent { background-color: var(--accent-color) !important; }
+        /* --- Global Styles --- */
+        .text-accent {
+            color: var(--accent-color);
+        }
+
+        .bg-secondary-custom {
+            background-color: var(--secondary-bg);
+        }
+
         .btn-accent {
             background-color: var(--accent-color);
-            color: #0F172A;
+            color: #000;
             font-weight: 700;
             border: none;
             padding: 12px 28px;
             border-radius: 8px;
             transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
+
         .btn-accent:hover {
             background-color: #eab308;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(250, 204, 21, 0.3);
-            color: #0F172A;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(250, 204, 21, 0.2);
         }
-        .section-padding { padding: 100px 0; }
 
-        /* Navbar */
+        .btn-outline-custom {
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-outline-custom:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* --- Header --- */
         .navbar {
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(12px);
@@ -69,246 +83,282 @@
             border-bottom: 1px solid var(--border-color);
             padding: 15px 0;
         }
+
         .navbar-brand img {
             width: 45px;
             height: 45px;
             border-radius: 50%;
             border: 2px solid var(--accent-color);
-            margin-right: 12px;
-            object-fit: cover;
+            margin-right: 10px;
         }
+
         .nav-link {
             color: var(--text-primary) !important;
             font-weight: 500;
             margin: 0 10px;
-            transition: var(--transition);
         }
-        .nav-link:hover { color: var(--accent-color) !important; }
-        .dropdown-menu {
-            background-color: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-        }
-        .dropdown-item { color: var(--text-primary); transition: var(--transition); }
-        .dropdown-item:hover { background-color: var(--primary-bg); color: var(--accent-color); }
 
-        /* Hero Section */
-        .hero-section {
-            padding: 160px 0 100px 0;
-            text-align: center;
-            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+        .nav-link:hover {
+            color: var(--accent-color) !important;
         }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
         .hero-title {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 25px;
         }
+
         .hero-lead {
             color: var(--text-secondary);
             font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-        }
-        .btn-outline-accent {
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
-            font-weight: 600;
-            padding: 10px 25px;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        .btn-outline-accent:hover {
-            background: var(--accent-color);
-            color: var(--primary-bg);
-        }
-        .hero-image-wrapper {
-            margin-top: 60px;
-            position: relative;
-            display: inline-block;
-        }
-        .hero-floating-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            animation: float 6s ease-in-out infinite;
-            border: 1px solid var(--border-color);
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            max-width: 700px;
+            margin: 0 auto 40px;
         }
 
-        /* Game Slider */
-        .slider-section {
-            background-color: var(--secondary-bg);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+        .hero-image-container {
+            margin-top: 60px;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
         }
-        .swiper-slide {
-            width: auto;
-            padding: 20px 0;
-        }
-        .game-card {
-            width: 280px;
-            height: 450px;
+
+        .hero-image {
+            max-width: 90%;
             border-radius: 20px;
-            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             border: 1px solid var(--border-color);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* --- Animations --- */
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Game Slider --- */
+        .slider-section {
+            padding: 80px 0;
+            background-color: var(--secondary-bg);
+        }
+
+        .swiper {
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
             transition: var(--transition);
         }
-        .game-card img {
+
+        .swiper-slide-active {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .swiper-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .game-card:hover {
-            border-color: var(--accent-color);
-            transform: scale(1.02);
-        }
 
-        /* How It Works */
+        /* --- How it Works --- */
         .step-card {
             background: var(--secondary-bg);
             border: 1px solid var(--border-color);
-            padding: 50px 30px;
-            border-radius: 24px;
+            padding: 40px;
+            border-radius: 20px;
             height: 100%;
             position: relative;
-            overflow: hidden;
             transition: var(--transition);
             z-index: 1;
+            overflow: hidden;
         }
+
         .step-card:hover {
-            transform: translateY(-12px);
+            transform: translateY(-10px);
             border-color: var(--accent-color);
         }
+
         .step-number {
             position: absolute;
-            top: -20px;
+            top: -10px;
             right: 10px;
-            font-size: 10rem;
+            font-size: 8rem;
             font-weight: 800;
             color: rgba(255, 255, 255, 0.03);
             z-index: -1;
-            user-select: none;
         }
+
         .step-icon {
             font-size: 3rem;
             color: var(--accent-color);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
-        /* Features */
-        .feature-item {
+        /* --- Features --- */
+        .feature-box {
             padding: 30px;
-            background: rgba(30, 41, 59, 0.5);
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            height: 100%;
-            transition: var(--transition);
+            border-bottom: 1px solid var(--border-color);
         }
-        .feature-item:hover {
-            background: var(--secondary-bg);
-        }
+
         .feature-icon {
             font-size: 2.5rem;
             color: var(--accent-color);
-            margin-bottom: 20px;
-            display: inline-block;
+            margin-bottom: 15px;
         }
 
-        /* FAQ */
+        /* --- FAQ --- */
         .accordion-item {
             background-color: var(--secondary-bg);
             border: 1px solid var(--border-color);
-            margin-bottom: 15px;
-            border-radius: 12px !important;
+            margin-bottom: 10px;
+            border-radius: 10px !important;
             overflow: hidden;
         }
+
         .accordion-button {
             background-color: var(--secondary-bg);
             color: var(--text-primary);
             font-weight: 600;
             box-shadow: none !important;
-            padding: 20px;
         }
+
         .accordion-button:not(.collapsed) {
             background-color: var(--secondary-bg);
             color: var(--accent-color);
         }
-        .accordion-button::after { filter: invert(1); }
-        .accordion-body { color: var(--text-secondary); padding: 0 20px 20px 20px; }
 
-        /* Footer */
-        footer {
-            padding: 60px 0;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
+        .accordion-button::after {
+            filter: invert(1);
         }
 
-        /* Sticky Mobile Bar */
+        .accordion-body {
+            color: var(--text-secondary);
+        }
+
+        /* --- Modals --- */
+        .modal-content {
+            background-color: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--border-color);
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+
+        /* --- Mobile Sticky Bar --- */
         .sticky-mobile-bar {
-            display: none;
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.95);
+            padding: 15px;
+            background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(10px);
-            padding: 15px 20px;
-            z-index: 9999;
             border-top: 1px solid var(--border-color);
+            z-index: 1000;
+            display: none;
         }
-
-        /* Modals */
-        .modal-content {
-            background-color: var(--secondary-bg);
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-        }
-        .modal-header { border-bottom: 1px solid var(--border-color); }
-        .modal-footer { border-top: 1px solid var(--border-color); }
-        .btn-close { filter: invert(1); }
 
         @media (max-width: 768px) {
-            .sticky-mobile-bar { display: block; }
-            .section-padding { padding: 60px 0; }
-            .hero-section { padding-bottom: 120px; }
-            body { padding-bottom: 80px; }
+            .sticky-mobile-bar {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+        }
+
+        footer {
+            padding: 50px 0;
+            border-top: 1px solid var(--border-color);
         }
     </style>
 </head>
+
 <body>
 
-    <!-- Header/Navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center fw-bold fs-4" href="#">
-                <img src="https://i.ibb.co/Q7R3DjQz/Picsart-26-06-01-16-18-36-364.jpg" alt="[EliteArenaz] Logo">
-                [EliteArenaz]
+            <a class="navbar-brand d-flex align-items-center fw-bold text-white" href="#">
+                <img src="https://i.ibb.co/Q7R3DjQz/Picsart-26-06-01-16-18-36-364.jpg" alt="EliteArenaz Logo">
+                EliteArenaz
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="bi bi-list text-white fs-1"></span>
             </button>
-            <div class="collapse navbar-collapse" id="mainNav">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#how-to-play">How to Play</a></li>
                     <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
-                        <ul class="dropdown-menu dropdown-menu-end">
+                        <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="#faq">FAQ</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a></li>
                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a></li>
-                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#fairPlayModal">Fair Play Policy</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#fairPlayModal">Fair Play</a></li>
                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#refundModal">Refund Policy</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item ms-lg-3">
-                        <a href="https://www.mediafire.com/file/i5exvw2hx5zmxf9/elitearenaz-v1.apk/file" class="btn btn-accent">Download App</a>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="https://www.mediafire.com/file/i5exvw2hx5zmxf9/elitearenaz-v1.apk/file" class="btn btn-accent px-4">Download App</a>
                     </li>
                 </ul>
             </div>
@@ -318,176 +368,145 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <div data-aos="fade-up">
-                <h1 class="hero-title">India's Ultimate <span class="text-accent">Esports Arena</span> is Here</h1>
-                <p class="hero-lead">Experience the thrill of competitive gaming. Join daily tournaments for BGMI, Free Fire, and more. Compete with the best and win real cash rewards instantly.</p>
+            <div class="fade-in-up">
+                <h1 class="hero-title">India's Ultimate <br><span class="text-accent">Esports Arena</span> is Here</h1>
+                <p class="hero-lead">Compete in high-stakes tournaments, showcase your skills, and win real cash rewards. The ultimate platform for serious mobile gamers.</p>
                 <div class="d-flex flex-column align-items-center gap-3">
-                    <a href="https://www.mediafire.com/file/i5exvw2hx5zmxf9/elitearenaz-v1.apk/file" class="btn btn-accent btn-lg px-5 py-3 fs-5">Download & Start Playing</a>
-                    <a href="#" class="btn btn-outline-accent">Get ₹10 FREE on Signup!</a>
+                    <a href="https://www.mediafire.com/file/i5exvw2hx5zmxf9/elitearenaz-v1.apk/file" class="btn btn-accent btn-lg px-5">Download & Start Playing</a>
+                    <button class="btn text-accent fw-bold">Get ₹10 FREE on Signup!</button>
                 </div>
             </div>
-            <div class="hero-image-wrapper" data-aos="fade-up" data-aos-delay="200">
-                <img src="https://i.ibb.co/3yCHtMjX/Screenshot-20260601-164736.jpg" alt="App Preview" class="hero-floating-img" style="max-width: 320px;">
-            </div>
-        </div>
-    </section>
-
-    <!-- Game Slider Section -->
-    <section class="slider-section section-padding">
-        <div class="container mb-5 text-center">
-            <h2 class="fw-bold h1" data-aos="fade-up">Tournaments for Your Favorite Games</h2>
-            <div class="bg-accent mx-auto mt-3" style="height: 4px; width: 80px; border-radius: 2px;"></div>
-        </div>
-        <div class="swiper gameSwiper" data-aos="zoom-in">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="game-card">
-                        <img src="https://i.ibb.co/3yCHtMjX/Screenshot-20260601-164736.jpg" alt="Game 1">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="game-card">
-                        <img src="https://i.ibb.co/KxHHk3Dx/Screenshot-20260601-165011.jpg" alt="Game 2">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="game-card">
-                        <img src="https://i.ibb.co/SXdcTSjp/Screenshot-20260601-165024.jpg" alt="Game 3">
-                    </div>
-                </div>
-                <!-- Duplicate for loop -->
-                <div class="swiper-slide">
-                    <div class="game-card">
-                        <img src="https://i.ibb.co/3yCHtMjX/Screenshot-20260601-164736.jpg" alt="Game 1">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="game-card">
-                        <img src="https://i.ibb.co/KxHHk3Dx/Screenshot-20260601-165011.jpg" alt="Game 2">
-                    </div>
-                </div>
+            <div class="hero-image-container fade-in-up">
+                <img src="https://i.ibb.co/3yCHtMjX/Screenshot-20260601-164736.jpg" alt="EliteArenaz App" class="hero-image">
             </div>
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section id="how-to-play" class="section-padding">
+    <!-- Game Slider -->
+    <section class="slider-section">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold h1">How It Works</h2>
-                <p class="text-secondary">Start your winning journey in 3 easy steps</p>
+            <h2 class="text-center fw-800 mb-5 fs-1">Tournaments for Your <br><span class="text-accent">Favorite Games</span></h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="https://i.ibb.co/3yCHtMjX/Screenshot-20260601-164736.jpg" alt="Game 1"></div>
+                    <div class="swiper-slide"><img src="https://i.ibb.co/KxHHk3Dx/Screenshot-20260601-165011.jpg" alt="Game 2"></div>
+                    <div class="swiper-slide"><img src="https://i.ibb.co/SXdcTSjp/Screenshot-20260601-165024.jpg" alt="Game 3"></div>
+                    <div class="swiper-slide"><img src="https://i.ibb.co/Fkg2qWJ8/Screenshot-20260601-192345.jpg" alt="Game 4"></div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-to-play" class="py-5">
+        <div class="container py-5">
+            <h2 class="text-center fw-800 mb-5">How It <span class="text-accent">Works</span></h2>
             <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-4">
                     <div class="step-card">
-                        <div class="step-number">01</div>
+                        <span class="step-number">01</span>
                         <i class="bi bi-download step-icon"></i>
-                        <h4 class="fw-bold">Download & Register</h4>
-                        <p class="text-secondary">Download the [EliteArenaz] APK and sign up with your mobile number to get your joining bonus.</p>
+                        <h3>Download & Register</h3>
+                        <p class="text-secondary">Install the app and create your profile using your in-game details and mobile number.</p>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-4">
                     <div class="step-card">
-                        <div class="step-number">02</div>
-                        <i class="bi bi-controller step-icon"></i>
-                        <h4 class="fw-bold">Join a Tournament</h4>
-                        <p class="text-secondary">Select your favorite game, choose a tournament that fits your schedule, and secure your slot.</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="step-card">
-                        <div class="step-number">03</div>
+                        <span class="step-number">02</span>
                         <i class="bi bi-trophy step-icon"></i>
-                        <h4 class="fw-bold">Play, Win & Withdraw</h4>
-                        <p class="text-secondary">Showcase your skills, dominate the leaderboard, and withdraw your winnings instantly to your UPI.</p>
+                        <h3>Join a Tournament</h3>
+                        <p class="text-secondary">Browse daily matches, pick your favorite game, and secure your slot in the arena.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <span class="step-number">03</span>
+                        <i class="bi bi-wallet2 step-icon"></i>
+                        <h3>Play, Win & Withdraw</h3>
+                        <p class="text-secondary">Dominate the leaderboard and withdraw your winnings instantly to your UPI or Wallet.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="section-padding bg-secondary-bg">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold h1">Platform Features</h2>
-                <p class="text-secondary">Why thousands of gamers trust [EliteArenaz]</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6" data-aos="fade-right">
-                    <div class="feature-item">
-                        <i class="bi bi-shield-lock-fill feature-icon"></i>
-                        <h4 class="fw-bold">100% Secure & Fair Play</h4>
-                        <p class="text-secondary">Our advanced anti-cheat systems and manual monitoring ensure a level playing field for every participant. Your data and transactions are always encrypted.</p>
-                    </div>
+    <!-- Features -->
+    <section id="features" class="bg-secondary-custom py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="fw-800 fs-1 mb-4">Why Choose <br><span class="text-accent">EliteArenaz?</span></h2>
+                    <p class="text-secondary mb-4">We provide the most transparent and competitive environment for mobile esports in India.</p>
+                    <a href="https://www.mediafire.com/file/i5exvw2hx5zmxf9/elitearenaz-v1.apk/file" class="btn btn-outline-custom">Download App Now</a>
                 </div>
-                <div class="col-md-6" data-aos="fade-left">
-                    <div class="feature-item">
-                        <i class="bi bi-lightning-fill feature-icon"></i>
-                        <h4 class="fw-bold">Instant Withdrawals</h4>
-                        <p class="text-secondary">No more waiting for days. Once you win, you can transfer your earnings to your Bank account or UPI wallet within seconds.</p>
-                    </div>
-                </div>
-                <div class="col-md-6" data-aos="fade-right">
-                    <div class="feature-item">
-                        <i class="bi bi-people-fill feature-icon"></i>
-                        <h4 class="fw-bold">Generous Referral Program</h4>
-                        <p class="text-secondary">Invite your friends to join the arena and earn lifetime commissions and bonuses for every tournament they play.</p>
-                    </div>
-                </div>
-                <div class="col-md-6" data-aos="fade-left">
-                    <div class="feature-item">
-                        <i class="bi bi-headset feature-icon"></i>
-                        <h4 class="fw-bold">24/7 Customer Support</h4>
-                        <p class="text-secondary">Our dedicated support team is available around the clock to assist you with any queries regarding matches, payments, or the app.</p>
+                <div class="col-lg-6">
+                    <div class="row g-0">
+                        <div class="col-sm-6 feature-box">
+                            <i class="bi bi-shield-check feature-icon"></i>
+                            <h5 class="fw-bold">100% Secure & Fair Play</h5>
+                            <p class="small text-secondary">Advanced anti-cheat systems and manual moderation for every match.</p>
+                        </div>
+                        <div class="col-sm-6 feature-box">
+                            <i class="bi bi-lightning-charge feature-icon"></i>
+                            <h5 class="fw-bold">Instant Withdrawals</h5>
+                            <p class="small text-secondary">No waiting days. Get your prize money in your account within minutes.</p>
+                        </div>
+                        <div class="col-sm-6 feature-box">
+                            <i class="bi bi-people feature-icon"></i>
+                            <h5 class="fw-bold">Generous Referral</h5>
+                            <p class="small text-secondary">Invite friends and earn bonuses for every contest they join.</p>
+                        </div>
+                        <div class="col-sm-6 feature-box">
+                            <i class="bi bi-headset feature-icon"></i>
+                            <h5 class="fw-bold">24/7 Support</h5>
+                            <p class="small text-secondary">Our dedicated team is always ready to help you with any queries.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="section-padding">
-        <div class="container">
+    <!-- FAQ -->
+    <section id="faq" class="py-5">
+        <div class="container py-5">
+            <h2 class="text-center fw-800 mb-5">Frequently Asked <span class="text-accent">Questions</span></h2>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="text-center mb-5">
-                        <h2 class="fw-bold h1">Frequently Asked Questions</h2>
-                    </div>
                     <div class="accordion" id="faqAccordion">
-                        <div class="accordion-item" data-aos="fade-up">
+                        <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                    Is [EliteArenaz] legal in India?
+                                    Is it legal to play on EliteArenaz?
                                 </button>
                             </h2>
                             <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    Yes, [EliteArenaz] operates as a "Game of Skill" platform, which is legally protected in most Indian states. However, users from states like Assam, Odisha, Telangana, Nagaland, Sikkim, and Andhra Pradesh are restricted from playing paid contests.
+                                    Yes, EliteArenaz hosts "Games of Skill," which are legally recognized across India (except in states where specific restrictions apply).
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item" data-aos="fade-up">
+                        <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                    How do I join a tournament?
+                                    How do I withdraw my winnings?
                                 </button>
                             </h2>
                             <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    Simply open the app, select your preferred game (e.g., BGMI), browse the list of upcoming matches, and click 'Join'. Ensure you have enough balance in your wallet for the entry fee.
+                                    You can withdraw your winnings directly to your verified UPI ID or Bank Account instantly through the 'Wallet' section in the app.
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item" data-aos="fade-up">
+                        <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                    What is the minimum withdrawal amount?
+                                    Are there free tournaments available?
                                 </button>
                             </h2>
                             <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    The minimum withdrawal amount is ₹50. You can withdraw your winnings once a day through UPI or Bank Transfer.
+                                    Absolutely! We regularly host "Daily Giveaways" and free-to-entry tournaments where you can win real cash without any entry fee.
                                 </div>
                             </div>
                         </div>
@@ -498,157 +517,7 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="text-center">
         <div class="container">
-            <div class="mb-4">
-                <img src="https://i.ibb.co/Q7R3DjQz/Picsart-26-06-01-16-18-36-364.jpg" alt="Logo" style="width: 60px; border-radius: 50%;">
-                <h3 class="fw-bold mt-2">[EliteArenaz]</h3>
-            </div>
-            <p class="text-secondary small mb-4" style="max-width: 600px; margin: 0 auto;">
-                Disclaimer: This game involves an element of financial risk and may be addictive. Please play responsibly and at your own risk. [EliteArenaz] is only for users 18+ years of age.
-            </p>
-            <div class="mb-4">
-                <a href="#" class="text-secondary mx-2 text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy</a>
-                <a href="#" class="text-secondary mx-2 text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Terms</a>
-                <a href="#" class="text-secondary mx-2 text-decoration-none" data-bs-toggle="modal" data-bs-target="#refundModal">Refunds</a>
-            </div>
-            <p class="text-secondary mb-0">&copy; 2024 [EliteArenaz] Esports. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Sticky Mobile Bar -->
-    <div class="sticky-mobile-bar">
-        <a href="https://www.mediafire.com/file/i5exvw2hx5zmxf9/elitearenaz-v1.apk/file" class="btn btn-accent w-100 py-3 fs-6">
-            <i class="bi bi-download me-2"></i> Download & Get ₹10 Bonus
-        </a>
-    </div>
-
-    <!-- Modals -->
-    <!-- Privacy Policy -->
-    <div class="modal fade" id="privacyModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Privacy Policy</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p>At <span class="text-accent fw-bold">[EliteArenaz]</span>, we value your privacy. This policy outlines how we collect and protect your data.</p>
-                    <h6>1. Information Collection</h6>
-                    <p>We collect your mobile number, device information, and transaction history to provide a seamless experience on <span class="text-accent fw-bold">[EliteArenaz]</span>.</p>
-                    <h6>2. Data Usage</h6>
-                    <p>Your data is used to verify your identity, process withdrawals, and prevent fraudulent activities within the <span class="text-accent fw-bold">[EliteArenaz]</span> ecosystem.</p>
-                    <h6>3. Security</h6>
-                    <p>We implement high-level encryption to ensure your personal and financial information remains secure on <span class="text-accent fw-bold">[EliteArenaz]</span>.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Terms & Conditions -->
-    <div class="modal fade" id="termsModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Terms & Conditions</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p>By using <span class="text-accent fw-bold">[EliteArenaz]</span>, you agree to the following terms:</p>
-                    <h6>1. Eligibility</h6>
-                    <p>You must be at least 18 years old to participate in paid tournaments on <span class="text-accent fw-bold">[EliteArenaz]</span>.</p>
-                    <h6>2. Account Responsibility</h6>
-                    <p>You are responsible for maintaining the confidentiality of your <span class="text-accent fw-bold">[EliteArenaz]</span> account credentials.</p>
-                    <h6>3. Prohibited States</h6>
-                    <p>Users from restricted Indian states are not allowed to play cash games on <span class="text-accent fw-bold">[EliteArenaz]</span>.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Fair Play Policy -->
-    <div class="modal fade" id="fairPlayModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Fair Play Policy</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p><span class="text-accent fw-bold">[EliteArenaz]</span> is committed to providing a fair gaming environment.</p>
-                    <h6>1. Anti-Cheat</h6>
-                    <p>Any user found using hacks, mods, or third-party tools will be permanently banned from <span class="text-accent fw-bold">[EliteArenaz]</span>.</p>
-                    <h6>2. Collusion</h6>
-                    <p>Teaming up or fixing matches is strictly prohibited. <span class="text-accent fw-bold">[EliteArenaz]</span> monitors all gameplay to detect such behavior.</p>
-                    <h6>3. Consequences</h6>
-                    <p>Violation of fair play rules will result in immediate account suspension and forfeiture of winnings on <span class="text-accent fw-bold">[EliteArenaz]</span>.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Refund Policy -->
-    <div class="modal fade" id="refundModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Refund & Cancellation Policy</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <h6>1. Tournament Cancellation</h6>
-                    <p>If a tournament is cancelled by <span class="text-accent fw-bold">[EliteArenaz]</span>, the full entry fee will be refunded to your wallet.</p>
-                    <h6>2. User Withdrawal</h6>
-                    <p>Entry fees are non-refundable once a user joins a tournament on <span class="text-accent fw-bold">[EliteArenaz]</span>, unless the match is cancelled.</p>
-                    <h6>3. Transaction Failures</h6>
-                    <p>In case of failed deposits, the amount will be refunded to the original payment source within 5-7 business days by <span class="text-accent fw-bold">[EliteArenaz]</span>'s payment partners.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-
-        // Initialize Swiper
-        const swiper = new Swiper('.gameSwiper', {
-            slidesPerView: 'auto',
-            centeredSlides: true,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-            grabCursor: true,
-        });
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                e.preventDefault();
-                const target = document.querySelector(targetId);
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+            <h4 class="fw-bold mb-3">EliteArenaz</h4>
+            <p class="text-secondary small mb-4">EliteArenaz is an independent tournament platform and is not aff
